@@ -35,3 +35,31 @@ print(good[0])
 bad = []
 for d in data:
 	bad.append('bad' in d) # 存取True and False
+
+# 文字計數
+wc = {}  #wc =word_count
+for d in data:
+	words = d.split() #split預設是空白建(空字串),但無法分割連續空字串
+	for word in words:
+		if word in wc:
+			wc[word] += 1
+		else:
+			wc[word] = 1 #新增新的key進wc字典
+
+for word in wc:
+	if wc[word] > 1000000:
+		print(word, wc[word])
+
+print(len(wc))
+print(wc['Ken'])
+
+while True:
+	word = input('請問你想查什麼字: ')
+	if word == 'q':
+		break
+	if word in wc:
+		print(word, '出現過的次數為: ', wc[word])
+	else:
+		print('這個字沒有出現過')
+print('感謝使用本查詢功能')
+
